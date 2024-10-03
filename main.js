@@ -12,12 +12,12 @@ let characteristicCache = null;
 
 // Подключение к устройству при нажатии на кнопку Connect
 connectButton.addEventListener('click', function() {
-  disconnect();
+  connect();
 });
 
 // Отключение от устройства при нажатии на кнопку Disconnect
 disconnectButton.addEventListener('click', function() {
-  connect();
+  disconnect();
 });
 
 // Обработка события отправки формы
