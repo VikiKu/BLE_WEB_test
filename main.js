@@ -17,7 +17,7 @@ connectButton.addEventListener('click', function() {
 
 // Отключение от устройства при нажатии на кнопку Disconnect
 disconnectButton.addEventListener('click', function() {
-  disconnect();
+  connect();
 });
 
 // Обработка события отправки формы
@@ -37,7 +37,6 @@ function connect() {
       catch(error => log(error));
 }
 
-// Запрос выбора Bluetooth устройства
 // Запрос выбора Bluetooth устройства
 function requestBluetoothDevice() {
   log('Requesting bluetooth device...');
