@@ -112,7 +112,7 @@ function log(data, type = '') {
 
 // Отключиться от подключенного устройства
 function disconnect() {
-  if (deviceCache) {
+if (deviceCache) {
     log('Disconnecting from "' + deviceCache.name + '" bluetooth device...');
     deviceCache.removeEventListener('gattserverdisconnected',
         handleDisconnection);
