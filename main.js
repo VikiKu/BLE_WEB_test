@@ -39,7 +39,7 @@ function connect() {
 
 // Запрос выбора Bluetooth устройства
 function requestBluetoothDevice() {
-   log('Requesting bluetooth device...');
+log('Requesting bluetooth device...');
 
   return navigator.bluetooth.requestDevice({
     filters: [{services: [0xFFE0]}],
@@ -48,8 +48,23 @@ function requestBluetoothDevice() {
         log('"' + device.name + '" bluetooth device selected');
         deviceCache = device;
 
+        // Добавленная строка
+        deviceCache.addEventListener('gattserverdisconnected',
+            handleDisconnection);
+
         return deviceCache;
       });
+}
+// Обработчик разъединения
+function handleDisconnection(event) {
+  let device = event.target;
+
+  log('"' + device.name +
+      '" bluetooth device disconnected, trying to reconnect...');
+
+  connectDeviceAndCacheCharacteristic(device).
+      then(characteristic => startNotifications(characteristic)).
+      catch(error => log(error));
 }
 
 // Подключение к определенному устройству, получение сервиса и характеристики
@@ -97,7 +112,23 @@ function log(data, type = '') {
 
 // Отключиться от подключенного устройства
 function disconnect() {
-  //
+  if (deviceCache) {
+    log('Disconnecting from "' + deviceCache.name + '" bluetooth device...');
+    deviceCache.removeEventListener('gattserverdisconnected',
+        handleDisconnection);
+
+    if (deviceCache.gatt.connected) {
+      deviceCache.gatt.disconnect();
+      log('"' + deviceCache.name + '" bluetooth device disconnected');
+    }
+    else {
+      log('"' + deviceCache.name +
+          '" bluetooth device is already disconnected');
+    }
+  }
+
+  characteristicCache = null;
+  deviceCache = null;
 }
 
 // Отправить данные подключенному устройству
