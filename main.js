@@ -105,7 +105,7 @@
   then(server => {
   log('GATT server connected, getting service...');
  
-  return server.getPrimaryService(0x1234);
+  return server.getPrimaryService(['00001234-cc7a-482a-984a-7f2ed5b3e58f']);
   }).
   then(service => {
   log('Service found, getting characteristic...');
