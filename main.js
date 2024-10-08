@@ -68,7 +68,8 @@
  
   return navigator.bluetooth.requestDevice({
   acceptAllDevices: true, // Принимаем все устройства без фильтрации
-  //filters:[{services: [0x1234]}],
+  optionalServices: ['00001234-cc7a-482a-984a-7f2ed5b3e58f']
+   //filters:[{services: [0x1234]}],
   }).
   then(device => {
   log('"' + device.name + '" bluetooth device selected');
