@@ -1,3 +1,10 @@
+/*
+- UUID сервиса: `00001234-cc7a-482a-984a-7f2ed5b3e58f`
+- UUID первой характеристики: `00005678-8e22-4541-9d4c-21edae82ed19` (девайс-компьютер)
+- UUID второй характеристики: `00009abc-8e22-4541-9d4c-21edae82ed19` (компьютер-девайс)
+*/
+
+
 // Получение ссылок на элементы UI
 let connectButton = document.getElementById('connect');
 let disconnectButton = document.getElementById('disconnect');
@@ -76,7 +83,7 @@ function connectDeviceAndCacheCharacteristic(device) {
       then(service => {
         log('Service found, getting characteristic...');
 
-        return service.getCharacteristic(0x5678);
+        return service.getCharacteristic('00009abc-8e22-4541-9d4c-21edae82ed19');
       }).
       then(characteristic => {
         log('Characteristic found');
