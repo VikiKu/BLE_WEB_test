@@ -152,5 +152,17 @@ function handleCharacteristicValueChanged(event) {
 
 // Отправить данные подключенному устройству
 function send(data) {
-  //
+  data = String(data);
+
+  if (!data || !characteristicCache) {
+    return;
+  }
+
+  writeToCharacteristic(characteristicCache, data);
+  log(data, 'out');
+}
+
+// Записать значение в характеристику
+function writeToCharacteristic(characteristic, data) {
+  characteristic.writeValue(new TextEncoder().encode(data));
 }
