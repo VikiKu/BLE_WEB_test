@@ -2,6 +2,8 @@
 const serviceUuid = '00001234-cc7a-482a-984a-7f2ed5b3e58f';
 const writeCharacteristicUuid = '00005678-8e22-4541-9d4c-21edae82ed19';
 const notifyCharacteristicUuid = '00009abc-8e22-4541-9d4c-21edae82ed19';
+
+test '00009000-8e22-4541-9d4c-21edae82ed19'
 */
 
 
