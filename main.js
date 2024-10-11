@@ -1,7 +1,7 @@
 /*
-- UUID сервиса: `00001234-cc7a-482a-984a-7f2ed5b3e58f`
-- UUID первой характеристики: `00005678-8e22-4541-9d4c-21edae82ed19` (девайс-компьютер)
-- UUID второй характеристики: `00009abc-8e22-4541-9d4c-21edae82ed19` (компьютер-девайс)
+const serviceUuid = '001234cc-7a48-2a98-4a7f-2ed5b3e58f00';
+const writeCharacteristicUuid = '0056788e-2245-419d-4c21-edae82ed1900';
+const notifyCharacteristicUuid = '0090008e-2245-419d-4c21-edae82ed1900';
 */
 
 
@@ -52,7 +52,7 @@ function requestBluetoothDevice() {
 
   return navigator.bluetooth.requestDevice({
     acceptAllDevices: true, // Принимаем все устройства без фильтрации
-    optionalServices: ['00001234-cc7a-482a-984a-7f2ed5b3e58f']
+    optionalServices: ['001234cc-7a48-2a98-4a7f-2ed5b3e58f00']
     //filters: [{services: [0xFFE0]}],
   }).
       then(device => {
@@ -78,12 +78,12 @@ function connectDeviceAndCacheCharacteristic(device) {
       then(server => {
         log('GATT server connected, getting service...');
 
-        return server.getPrimaryService('00001234-cc7a-482a-984a-7f2ed5b3e58f');
+        return server.getPrimaryService('001234cc-7a48-2a98-4a7f-2ed5b3e58f00');
       }).
       then(service => {
         log('Service found, getting characteristic...');
 
-        return service.getCharacteristic('00005678-8e22-4541-9d4c-21edae82ed19');
+        return service.getCharacteristic('0056788e-2245-419d-4c21-edae82ed1900');
       }).
       then(characteristic => {
         log('Characteristic found');
