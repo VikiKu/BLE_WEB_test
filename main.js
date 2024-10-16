@@ -54,7 +54,7 @@ function requestBluetoothDevice() {
 
   return navigator.bluetooth.requestDevice({
     acceptAllDevices: true, // Принимаем все устройства без фильтрации
-    optionalServices: ['0000FE40-CC7A-482A-984A-7F2ED5B3E58F']
+    optionalServices: ['0000fe40-cc7a-482a-984a-7f2ed5b3e58f']
     //filters: [{services: [0xFFE0]}],
   }).
       then(device => {
@@ -80,11 +80,11 @@ function connectDeviceAndCacheCharacteristic(device) {
       then(server => {
         log('GATT server connected, getting service...');
 
-        return server.getPrimaryService('0000FE40-CC7A-482A-984A-7F2ED5B3E58F');
+        return server.getPrimaryService('0000fe40-cc7a-482a-984a-7f2ed5b3e58f');
       }).
       then(service => {
         log('Service found, getting characteristic...');
-          return service.getCharacteristic('0000FE42-8E22-4541-9D4C-21EDAE82ED19');
+          return service.getCharacteristic('0000fe42-8e22-4541-9d4c-21edae82ed19');
        // return service.getCharacteristic('00005678-8e22-4541-9d4c-21edae82ed19');
       }).
       then(characteristic => {
