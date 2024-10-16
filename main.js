@@ -4,6 +4,16 @@ const writeCharacteristicUuid = '00005678-8e22-4541-9d4c-21edae82ed19';
 const notifyCharacteristicUuid = '00009abc-8e22-4541-9d4c-21edae82ed19';
 
 test '00009000-8e22-4541-9d4c-21edae82ed19'
+-------
+p2p (жму на кнопку - приходит сообщение):
+0000fe40-cc7a-482a-984a-7f2ed5b3e58f
+0000fe42-8e22-4541-9d4c-21edae82ed19
+------
+service: 00000000-cc7a-482a-984a-7f2ed5b3e58f
+write: 00005678-8e22-4541-9d4c-21edae82ed19
+
+
+
 */
 
 
