@@ -63,7 +63,7 @@ function requestBluetoothDevice() {
 
   return navigator.bluetooth.requestDevice({
     acceptAllDevices: true, // Принимаем все устройства без фильтрации
-    optionalServices: ['0000FE40-CC7A-482A-984A-7F2ED5B3E58F']
+    optionalServices: ['0000fe40-cc7a-482a-984a-7f2ed5b3e58f']
   }).then(device => {
     log('"' + device.name + '" bluetooth device selected');
     deviceCache = device;
@@ -97,7 +97,7 @@ function connectDeviceAndCacheCharacteristics(device) {
   return device.gatt.connect()
       .then(server => {
         log('GATT server connected, getting service...');
-        return server.getPrimaryService(['0000FE40-CC7A-482A-984A-7F2ED5B3E58F']); // UUID сервиса
+        return server.getPrimaryService(['0000fe40-cc7a-482a-984a-7f2ed5b3e58f']); // UUID сервиса
       })
       .then(service => {
         log('Service found, getting characteristics...');
