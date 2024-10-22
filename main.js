@@ -1,8 +1,10 @@
 //00001234-cc7a-482a-984a-7f2ed5b3e58f сервис
 //00009000-8e22-4541-9d4c-21edae82ed19 write
-//00005678-8e22-4541-9d4c-21edae82ed19 notify
-
-
+//00005678-8e22-4541-9d4c-21edae82ed19 notify (STM32_BLE)
+//-------
+//0000fe40-cc7a-482a-984a-7f2ed5b3e58f service
+//0000fe41-8e22-4541-9d4c-21edae82ed19 write
+//0000fe42-8e22-4541-9d4c-21edae82ed19 notify (MY_P2P)
 
 // Получение ссылок на элементы UI
 let connectButton = document.getElementById('connect');
@@ -59,7 +61,7 @@ function requestBluetoothDevice() {
 
   return navigator.bluetooth.requestDevice({
     acceptAllDevices: true, // Принимаем все устройства без фильтрации
-    optionalServices: ['00001234-cc7a-482a-984a-7f2ed5b3e58f']
+    optionalServices: ['0000fe40-cc7a-482a-984a-7f2ed5b3e58f']
   }).then(device => {
     log('"' + device.name + '" bluetooth device selected');
     deviceCache = device;
@@ -93,15 +95,15 @@ function connectDeviceAndCacheCharacteristics(device) {
   return device.gatt.connect()
       .then(server => {
         log('GATT server connected, getting service...');
-        return server.getPrimaryService(['00001234-cc7a-482a-984a-7f2ed5b3e58f']); // UUID сервиса
+        return server.getPrimaryService(['0000fe40-cc7a-482a-984a-7f2ed5b3e58f']); // UUID сервиса
       })
       .then(service => {
         log('Service found, getting characteristics...');
 
         // Получаем обе характеристики: для уведомлений и записи
         return Promise.all([
-          service.getCharacteristic(['00005678-8e22-4541-9d4c-21edae82ed19']), // UUID для уведомлений
-          service.getCharacteristic(['00009000-8e22-4541-9d4c-21edae82ed19'])  // UUID для записи
+          service.getCharacteristic(['0000fe42-8e22-4541-9d4c-21edae82ed19']), // UUID для уведомлений
+          service.getCharacteristic(['0000fe41-8e22-4541-9d4c-21edae82ed19'])  // UUID для записи
         ]);
       })
       .then(characteristics => {
