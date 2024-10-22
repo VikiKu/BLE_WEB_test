@@ -4,7 +4,7 @@
 //-------
 //(MY_P2P)
 //------
-//d973f2e0-b19e-11e2-9e96-0800200c9a66
+//0000fe40-cc7a-482a-984a-7f2ed5b3e58f
 //d973f2e1-b19e-11e2-9e96-0800200c9a66
 //d973f2e2-b19e-11e2-9e96-0800200c9a66
 
@@ -63,7 +63,7 @@ function requestBluetoothDevice() {
 
   return navigator.bluetooth.requestDevice({
     acceptAllDevices: true, // Принимаем все устройства без фильтрации
-    optionalServices: ['0000fe40-cc7a-482a-984a-7f2ed5b3e58f']
+    //optionalServices: ['0000fe40-cc7a-482a-984a-7f2ed5b3e58f']
   }).then(device => {
     log('"' + device.name + '" bluetooth device selected');
     deviceCache = device;
