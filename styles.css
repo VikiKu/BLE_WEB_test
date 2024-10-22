@@ -10,12 +10,13 @@ body {
 /* Центрирование контента */
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 900px; /* Увеличиваем максимальную ширину */
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-height: 500px; /* Устанавливаем минимальную высоту */
 }
 
 /* Заголовок */
@@ -26,7 +27,7 @@ body {
 
 .header h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 28px; /* Увеличиваем размер заголовка */
     color: #333;
 }
 
@@ -80,7 +81,7 @@ body {
     color: #f4f4f9;
     padding: 15px;
     border-radius: 5px;
-    height: 200px;
+    height: 300px; /* Увеличиваем высоту терминала */
     overflow-y: auto;
     margin-bottom: 20px;
     font-family: 'Courier New', Courier, monospace;
